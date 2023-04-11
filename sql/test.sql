@@ -1,0 +1,1 @@
+create table Details (name varchar(200),email varchar(200),comment varchar(200),gender varchar(20) );

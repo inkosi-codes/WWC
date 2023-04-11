@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100px;
+  background-color: white;
+  background-image:
+    linear-gradient(
+      to top right, 
+      #4B6F44, #87A96B, #8F9779
+    );
+}
+
+.form-horizontal {
+    display:block;
+    width:25em;
+    margin:2em auto 20em;;
+  }
