@@ -3,7 +3,7 @@ from pathlib import Path
 
 def serverconn(db_conn):
     conn = pymysql.connect(
-    host= '13.58.92.155', 
+    host= 'dsba.ccp7whzua9lm.us-east-2.rds.amazonaws.com', 
     port = 3306,
     user = 'adminaws', 
     password = 'FMmZl9xfAHHrFwZifZgk',

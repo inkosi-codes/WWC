@@ -13,7 +13,6 @@ app.secret_key = '*55ro8LThAD-po#i'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = -1
 
 
-info = []
 #-----------------------------------------------#
 #                   Routes                      #
 #-----------------------------------------------#
@@ -30,11 +29,9 @@ def getauth():
     if request.method == 'POST':
         username = request.form['InputUser']
         key = request.form['InputPassword']
-
-        key = hashlib.md5(key.encode())
         
     r_data = appauth.getAuth(db,username,key)
-    info.append(r_data)
+
     return redirect('home', code=302)
 
 @app.route("/home")
