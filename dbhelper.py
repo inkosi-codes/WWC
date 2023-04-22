@@ -6,7 +6,7 @@ def serverconn(db_conn):
     host= 'dsba.ccp7whzua9lm.us-east-2.rds.amazonaws.com', 
     port = 3306,
     user = 'adminaws', 
-    password = 'FMmZl9xfAHHrFwZifZgk',
+    password = '',
     db = db_conn,
         
     )
