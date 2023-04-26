@@ -10,7 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./static/js/Weatherapi.js"></script>
+    <script src="./static/js/Chartworks.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,80 +21,209 @@
 </head>
 
 <body>
-    <div class="bg-light p-2 shadow-sm" style="width: 280px; height: 100%;">
-        <div class="dropdown ">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>Welcome! Niguel</strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-        </div>
-        <hr>
-        <ul class="nav nav-pills flex-column p-2 mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#home"></use>
-                    </svg>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
-                    </svg>
-                    Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#table"></use>
-                    </svg>
-                    MyPay
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Profile
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Training & Certification
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Help & Support
-                </a>
-            </li>
-        </ul>
-        <hr>
-        <div class="container border border-secondary rounded shadow-sm p-2" id="weather">
-            <div class="row">
-            <div class="col-sm p-0" id="weatherIcon">
+    <div class="container m-0 p-0" style="width: 100%; height: 100%; max-width: 100%;">
+        <div class="row m-0 p-0" style="width: 100%; height: 100%;">
+            <div class="col-2 bg-light p-2 shadow-sm" style="min-width: fit-content;">
+                <div class="dropdown ">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                        id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>Welcome! {{data}}</strong>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <ul class="nav nav-pills flex-column p-2 mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#home"></use>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2"></use>
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#table"></use>
+                            </svg>
+                            MyPay
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#grid"></use>
+                            </svg>
+                            Training & Certification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#people-circle"></use>
+                            </svg>
+                            Help & Support
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="container border border-secondary rounded shadow-sm p-2" id="weather">
+                    <div class="row">
+                        <div class="col-4 p-0" id="weatherIcon">
+                        </div>
+                        <div class="col-sm p-0">
+                            <h5 id="description"></h5>
+                            <p id="weatherTemp"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm p-0">
+                            <p class="m-0 text-center" id="currentDay"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm p-0" >
-            <h5 id="description"></h5>
-                <p id="weatherTemp"></p>
+
+            <div class="col pl-2" style="width: 100%;">
+                <div class="row pt-1">
+                    <div class="col-sm ">
+                        <div class="card m-2">
+                            <div class="card-body">
+                                <img src="./static/img/WorldWide Company llc.png" class="mx-auto d-block" width="250"
+                                    height="250">
+                                <div class="px-5">
+                                    <p><span style="font-size: 18px;"><strong>People Come First</strong>: Lorem ipsum
+                                            dolor sit amet, consectetur adipiscing elit. Nullam vestibulum orci a sapien
+                                            imperdiet maximus.</span></p>
+                                    <p style="text-align: justify; line-height: 1;"><span
+                                            style="font-size: 18px;"><strong>Building a Positive Work Culture</strong>:
+                                            Suspendisse vel ex eget mauris efficitur finibus eu a enim. Aenean tellus
+                                            neque, consectetur sit amet lacus a, hendrerit ornare urna. Fusce venenatis
+                                            lorem vitae augue suscipit, eu tempor massa vulputate.</span></p>
+                                    <p><span style="font-size: 18px;"><strong>Strong Ethics Lead to Great Ethical
+                                                Decisions</strong>: Praesent iaculis velit libero, vel faucibus sem
+                                            pulvinar vel. Curabitur viverra nisl dui, a venenatis felis pellentesque id.
+                                            Donec non lacus diam.</p>
+                                    <p><span style="font-size: 18px;"><strong>Growth with Intention</strong>: Lorem
+                                            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua..</span></p>
+                                    <p><span style="font-size: 18px;"><strong>Becoming a financially sustainable
+                                                company</strong>: Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A
+                                            pellentesque sit amet porttitor eget dolor morbi non arcu.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-1">
+                    <div class="col-3">
+                        <div class="card m-2">
+                            <h3 class="text-center"> Quick Links</h3>
+                            <table class="text-center my-3" style="width:auto;">
+                                <tr>
+                                    <td>
+                                        Employee Handbook
+                                    </td>
+                                    <td>
+                                        Tax Witholding
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Discover What's New
+                                    </td>
+                                    <td>
+                                        Something Else
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="card m-2">
+                            <h4 class="text-center">Current Pay Stub</h4>
+                            <canvas id="myChart"></canvas>
+                            <script>
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'pie',
+                                    data: {
+                                        labels: ['Fed Taxes', 'Take Home', 'SS Taxes', 'Benefits'],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [12, 19, 3, 5],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="row">
+                            <div class="col-1 p-0" style="width: fit-content;">
+                                <div class="card" style="width: fit-content;">
+                                    <img class="rounded-left shadow m-0" src="./static/img/ceo.jpg"
+                                        style="height: 27.5em; width: 22em;">
+                                </div>
+                            </div>
+                            <div class="col p-0" style="background-color: #fff; max-height: 27.5em; max-width: 35em; overflow: scroll;">
+                                <article class="text-center">
+                                    <h3>Message from the CEO</h3>
+                                    <hr>
+                                </article>
+                                <p class="p-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Congue quisque egestas diam in arcu
+                                    cursus euismod. Et odio pellentesque diam volutpat commodo sed. Et ligula
+                                    ullamcorper malesuada proin libero nunc consequat. Adipiscing vitae proin
+                                    sagittis nisl rhoncus mattis. Fames ac turpis egestas sed tempus urna. Lectus
+                                    mauris ultrices eros in cursus turpis.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="card m-2">
+                            Third Card
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

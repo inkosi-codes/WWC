@@ -1,4 +1,10 @@
-function displayWeather(current) {
+function getDateInfo(){
+  const dayForWidget = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ;
+  return dayForWidget
+
+}
+
+async function displayWeather(current) {
   console.log(current);
   var weatherdesc = current.weather[0].description;
   var weatherIcon = current.weather[0].icon;
@@ -20,10 +26,13 @@ function displayWeather(current) {
   imgElement.src = 'https://openweathermap.org/img/wn/'+ weatherIcon + '@2x.png'
   imgElement.alt = 'current weather icon'
   imgLocation.append(imgElement)
+
+  weatherDay = getDateInfo();
+  document.getElementById('currentDay').append(weatherDay)
 }
 
-function weatherWidget(lat, lon) {
-  var key = "";
+async function weatherWidget(lat, lon) {
+  var key = "913d4cee4b20ad1ce85825ce4a942bb7";
   fetch(
     "https://api.openweathermap.org/data/3.0/onecall?lat=" +
       lat +

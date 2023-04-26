@@ -1,14 +1,15 @@
 import dbhelper
 
-
 def getAuth(db, usr, key):
+
     db_connect = dbhelper.serverconn(db)
     cursor = db_connect.cursor()
-    cursor.execute("""SELECT * FROM WWC_Admin.user_login_data""")
+    cursor.execute(f"""CALL `WWC_Admin`.`site_auth`('{usr}', '{key}');""")
 
-    rows = cursor.fetchall()
-    #print(f'{rows}')
-    return (rows)
-    dbhelper.db_close(db_connect)
+    for row in cursor.fetchall():
+        rdata = row
 
-#getAuth()
+    dbhelper.db_close(db_connect)    
+    return rdata
+
+#getAuth(db, usr, key)
