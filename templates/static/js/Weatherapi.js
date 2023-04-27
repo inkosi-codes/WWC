@@ -4,7 +4,7 @@ function getDateInfo(){
 
 }
 
-async function displayWeather(current) {
+function displayWeather(current) {
   console.log(current);
   var weatherdesc = current.weather[0].description;
   var weatherIcon = current.weather[0].icon;
@@ -31,7 +31,7 @@ async function displayWeather(current) {
   document.getElementById('currentDay').append(weatherDay)
 }
 
-async function weatherWidget(lat, lon) {
+function weatherWidget(lat, lon) {
   var key = "913d4cee4b20ad1ce85825ce4a942bb7";
   fetch(
     "https://api.openweathermap.org/data/3.0/onecall?lat=" +
