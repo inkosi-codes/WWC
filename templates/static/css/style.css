@@ -30,6 +30,14 @@ body {
     background-color: #f5eec2;
   }
 
+  .summary-div {
+    float: left;
+    top: 5%;
+    margin-left: 0%;
+    margin-top: 15px;
+    width: 700px;
+}
+
   #weather {
     background-color: rgba(120, 171, 120, 0.2);
   }
@@ -63,4 +71,11 @@ body {
   position: relative; /* Set a new positioning context */
   top: 50%; /* Move the modal 50% down from the top */
   transform: translateY(-50%); /* Move the modal up by 50% of its own height */
+}
+
+@media only screen and (max-width:768px) {
+
+  .row {
+      display: block;
+  }
 }
