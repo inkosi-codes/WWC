@@ -9,7 +9,7 @@ function getDateInfo() {
 }
 
 function displayWeather(current) {
-  console.log(current);
+  // console.log(current);
   var weatherdesc = current.weather[0].description;
   var weatherIcon = current.weather[0].icon;
   var weatherTemp = Math.round(current.temp);
@@ -70,7 +70,3 @@ function getCoords() {
     window.navigator.geolocation.getCurrentPosition(setVariables);
   }
 }
-
-window.onload = function () {
-  getCoords();
-};

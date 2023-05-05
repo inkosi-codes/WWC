@@ -30,13 +30,14 @@ def homepage():
     benefits = getdata.getBenefitsData(session['username'])
     plan = benefits[0]
     plan_amt = benefits[1]
+    enroll = benefits[2]
 
     pay = getdata.getPayData(session['username'])
 
     index_to_remove = 0
     pay = pay[:index_to_remove] + pay[index_to_remove+1:]
 
-    return render_template("index.html", data = session['username'],pdata=pay,plan=plan,bamt=plan_amt)
+    return render_template("index.html", data = session['username'],pdata=pay,plan=plan,bamt=plan_amt,enroll=enroll)
 
 @app.route("/EmployeeProfile")
 def profile():
