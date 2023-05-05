@@ -60,7 +60,7 @@ def profile():
 def usrlogout():
     session.clear()
 
-    return redirect(url_for('usrlogin'))
+    return redirect(url_for('default'))
 
 @app.route("/authentication", methods=("GET", "POST"))
 def usrauth():
