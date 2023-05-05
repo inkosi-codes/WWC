@@ -4,7 +4,7 @@ def getAuth(db, usr, key):
 
     db_connect = dbhelper.serverconn(db)
     cursor = db_connect.cursor()
-    cursor.execute(f"""CALL `WWC_Admin`.`site_auth`('{usr}', '{key}');""")
+    cursor.execute(f"""CALL `WWC_Admin`.`auth`('{usr}', '{key}');""")
 
     for row in cursor.fetchall():
         data = row

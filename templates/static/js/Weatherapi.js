@@ -1,7 +1,11 @@
-function getDateInfo(){
-  const dayForWidget = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ;
-  return dayForWidget
-
+function getDateInfo() {
+  const dayForWidget = new Date().toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  return dayForWidget;
 }
 
 function displayWeather(current) {
@@ -10,25 +14,26 @@ function displayWeather(current) {
   var weatherIcon = current.weather[0].icon;
   var weatherTemp = Math.round(current.temp);
 
-  let desc = document.getElementById('description')
-  desc.append(weatherdesc.toUpperCase())
+  let desc = document.getElementById("description");
+  desc.append(weatherdesc.toUpperCase());
 
-  let temp = document.getElementById('weatherTemp')
-  let degIcon = document.createElement('span')
+  let temp = document.getElementById("weatherTemp");
+  let degIcon = document.createElement("span");
 
-  degIcon.innerHTML = '&#176;'
-  temp.append('Temp: ' + weatherTemp + ' F')
-  temp.appendChild(degIcon)
+  degIcon.innerHTML = "&#176;";
+  temp.append("Temp: " + weatherTemp + " F");
+  temp.appendChild(degIcon);
 
-  let imgLocation = document.getElementById('weatherIcon');
-  let imgElement = document.createElement('img')
+  let imgLocation = document.getElementById("weatherIcon");
+  let imgElement = document.createElement("img");
 
-  imgElement.src = 'https://openweathermap.org/img/wn/'+ weatherIcon + '@2x.png'
-  imgElement.alt = 'current weather icon'
-  imgLocation.append(imgElement)
+  imgElement.src =
+    "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+  imgElement.alt = "current weather icon";
+  imgLocation.append(imgElement);
 
   weatherDay = getDateInfo();
-  document.getElementById('currentDay').append(weatherDay)
+  document.getElementById("currentDay").append(weatherDay);
 }
 
 function weatherWidget(lat, lon) {
@@ -53,16 +58,14 @@ function weatherWidget(lat, lon) {
     });
 }
 
-function setVariables(geo){
+function setVariables(geo) {
+  let lat = geo.coords.latitude;
+  let lon = geo.coords.longitude;
 
-  let lat = geo.coords.latitude
-  let lon = geo.coords.longitude
-
-  weatherWidget(lat,lon)
+  weatherWidget(lat, lon);
 }
 
 function getCoords() {
-
   if (window.navigator.geolocation) {
     window.navigator.geolocation.getCurrentPosition(setVariables);
   }

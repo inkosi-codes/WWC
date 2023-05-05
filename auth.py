@@ -6,4 +6,3 @@ def init_login(usr,key):
 
     return l_info
 
-#def logout():
