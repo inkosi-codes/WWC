@@ -37,7 +37,7 @@ function displayWeather(current) {
 }
 
 function weatherWidget(lat, lon) {
-  var key = "913d4cee4b20ad1ce85825ce4a942bb7";
+  var key = "";
   fetch(
     "https://api.openweathermap.org/data/3.0/onecall?lat=" +
       lat +
