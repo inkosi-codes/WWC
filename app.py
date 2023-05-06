@@ -57,6 +57,11 @@ def profile():
 
     return render_template("profile.html", empid=empid, fname=fname, lname=lname, dob=dob, streetadd=streetadd, city_state=city_state, country=country, s_date=s_date, office=office, dept=dept, comp=comp)
 
+@app.route("/enrollment", methods=("GET", "POST"))
+def enroll():
+
+    return render_template("enrollment.html")
+
 @app.route("/logout")
 def usrlogout():
     session.clear()

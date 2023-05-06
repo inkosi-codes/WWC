@@ -237,25 +237,28 @@
                         </div>
                     </div>
                     <div class="col-4 mx-4 pt-2">
-                        <div class="card p-2">
-                            <h3 class="text-center">My Benefits</h3>
-                            <hr>
-                            <div class="row text-center">
-                                <div class="col">Plan Selected</div>
-                                <div class="col">{{plan}}</div>
+                        <form action="/enrollment" method="POST" class="text-center">
+                            <div class="card p-2">
+                                <h3 class="text-center">My Benefits</h3>
+                                <hr>
+                                <div class="row text-center">
+                                    <div class="col">Plan Selected</div>
+                                    <div class="col">{{plan}}</div>
+                                </div>
+                                <hr>
+                                <div class="row text-center">
+                                    <div class="col"> Coverage Amount</div>
+                                    <div class="col">{{bamt}}</div>
+                                </div>
+                                <hr>
+                                <div class="row text-center">
+                                    <div class="col"> Enrollment Date:</div>
+                                    <div class="col" id="enrolldate">{{enroll}}</div>
+                                </div>
+                                <button id="enroll-button" class="btn btn-primary"
+                                    style="display: none; width: 100%;">Enroll</button>
                             </div>
-                            <hr>
-                            <div class="row text-center">
-                                <div class="col"> Coverage Amount</div>
-                                <div class="col">{{bamt}}</div>
-                            </div>
-                            <hr>
-                            <div class="row text-center">
-                                <div class="col"> Enrollment Date:</div>
-                                <div class="col" id="enrolldate">{{enroll}}</div>
-                            </div>
-                            <button id="enroll-button" class="btn btn-primary" style="display: none;">Enroll</button>
-                        </div>
+                        </form>
                         <br>
                         <div class="card p-1">
                             <h4 class="text-center">Announcements</h4>
