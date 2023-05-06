@@ -1,23 +1,21 @@
-var dt = document.getElementById("enrolldate"); //get your date
-var today = new Date(); //get date today
+let dt = document.getElementById("enrolldate"); //get your date
+let ebutton = document.getElementById("enroll-button")
 
-today = today.setFullYear(today.getFullYear() - 1)
+let today = new Date(); //get date today
+let enrolldate = new Date(dt.innerText);
 
-enrolldate = new Date(dt.innerText);
-enrolldate = enrolldate.getTime();
+today = today.getTime();
+enrolldate = enrolldate.setFullYear(enrolldate.getFullYear() + 1);
 
-if (enrolldate < today) {
-  dt.style.color = "red";
+function enroll() {
+    if (today > enrolldate) {
+        dt.style.color = "red";
+        alert(
+            "Your benefits enrollment has expired. Please use the enrollment button to apply for benefits"
+        );
+        ebutton.style.display = 'block'
+    } else if (today < enrolldate) {
+        dt.style.color = "black";
+        ebutton.style.display = 'None'
+    }
 }
-
-function benefitsalert(){
-if (dt.style.color = "red"){
-    onload=alert("Your benefits enrollment has expired. Please use the enrollment button to apply for benefits")
-}
-}
-// console.log(enrolldate)
-
-window.onload = function () {
-    benefitsalert();
-    getCoords();
-  };

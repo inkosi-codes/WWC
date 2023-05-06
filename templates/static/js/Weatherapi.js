@@ -70,3 +70,8 @@ function getCoords() {
     window.navigator.geolocation.getCurrentPosition(setVariables);
   }
 }
+
+window.onload = function () {
+  getCoords();
+  enroll();
+};
