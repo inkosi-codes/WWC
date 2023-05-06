@@ -34,4 +34,13 @@ def getProfileData(usr):
         data = row
 
     dbhelper.db_close(db_connect)    
-    return data     
+    return data 
+
+def updateEnrollment(usr, pck):
+    db_connect = dbhelper.serverconn(db)
+    cursor = db_connect.cursor()
+    cursor.execute(f"""CALL `WorldWideCompany`.`update_benefits`('{usr}', '{pck}');""")
+ 
+    db_connect.commit()
+    dbhelper.db_close(db_connect)
+        

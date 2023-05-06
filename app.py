@@ -62,6 +62,13 @@ def enroll():
 
     return render_template("enrollment.html")
 
+@app.route("/submit_enroll", methods=("GET", "POST"))
+def enrollsubmit():
+    package = request.form['package']
+    getdata.updateEnrollment(session['username'],package)
+
+    return redirect(url_for('homepage'))
+
 @app.route("/logout")
 def usrlogout():
     session.clear()

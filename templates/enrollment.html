@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <form>
+    <form action="/submit_enroll" method="POST">
         <div class="row">
             <h1 class="text-center">Choose Your Benefit Package</h1>
         </div>
@@ -68,7 +68,10 @@
             <input type="radio" id="premium" name="package" value="premium">
             <label for="premium">Select Premium</label>
         </div>
-
+        <div>
+        <button id="enroll-submit" class="btn btn-primary">Submit</button>
+    </div>
 </form>
+
 </body>
 </html>
